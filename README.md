@@ -1,5 +1,5 @@
 # RadioML2016.10a_Benchmark
-[TOC]
+
 
 **说明：本文包含对CNN和CNN+LSTM基准模型的复现，模型架构参考下述两篇文章**
 
