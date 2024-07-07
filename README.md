@@ -1,6 +1,5 @@
 # RadioML2016.10a_Benchmark
 
-
 **说明：本文包含对CNN和CNN+LSTM基准模型的复现，模型架构参考下述两篇文章**
 
 ## 一、论文
@@ -11,16 +10,11 @@
 
 ![image-20240707105742936](https://daetz-image.oss-cn-hangzhou.aliyuncs.com/img/202407071057003.png)
 
-
-
 ![image-20240706174502716](https://daetz-image.oss-cn-hangzhou.aliyuncs.com/img/202407061745787.png)
-
-
 
 ### 2、A Deep Learning Approach for Modulation Recognition via Exploiting Temporal Correlations
 
 + 2018 IEEE 19th International Workshop on Signal Processing Advances in Wireless Communications (SPAWC)
-
 + [https://ieeexplore.ieee.org/abstract/document/8445938](https://ieeexplore.ieee.org/abstract/document/8445938)
 
 ![image-20240707114714838](https://daetz-image.oss-cn-hangzhou.aliyuncs.com/img/202407071147892.png)
@@ -29,13 +23,7 @@
 
 *请注意，在每个卷积层之前，我们使用零填充方法来控制输出卷的空间大小。具体来说，我们在输入量的边界周围填充两个零，因此第二个卷积层的输出量的大小为 32 × 132。然后我们将 32 作为输入的维度，将 132 作为 LSTM 层的时间步长。 Dropout方法也用于防止神经网络过拟合。与[12]中的架构相比，我们可以看到我们用 LSTM 层替换了第三个密集全连接层。我们的模拟表明，这种替换不仅将参数数量减少了一个数量级，而且还带来了显着的性能改进。*
 
-
-
-
-
 ## 二、流程
-
-
 
 ### 1、数据加载
 
@@ -94,13 +82,9 @@ train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 ```
 
-
-
 ```python
 # 替换模型架构
 ```
-
-
 
 ### 2、训练测试
 
@@ -140,7 +124,7 @@ for epoch in range(num_epochs):
     train_accuracy = correct / total
     train_losses.append(train_loss)
     train_accuracies.append(train_accuracy)
-    
+  
     # 测试阶段
     model.eval()
     running_loss = 0.0
@@ -159,14 +143,12 @@ for epoch in range(num_epochs):
     test_accuracy = correct / total
     test_losses.append(test_loss)
     test_accuracies.append(test_accuracy)
-    
+  
     print(f"Epoch [{epoch+1}/{num_epochs}], Train Loss: {train_loss:.4f}, Train Accuracy: {train_accuracy:.4f}, Test Loss: {test_loss:.4f}, Test Accuracy: {test_accuracy:.4f}")
 
 print("Training complete.")
 
 ```
-
-
 
 ### 3、可视化
 
@@ -196,8 +178,6 @@ plt.title('Accuracy vs. Epochs')
 plt.show()
 
 ```
-
-
 
 ## 三、模型
 
@@ -449,23 +429,11 @@ Estimated Total Size (MB): 3.07
 
 ![image-20240707115406360](https://daetz-image.oss-cn-hangzhou.aliyuncs.com/img/202407071154428.png)
 
-
-
-
-
 ## 四、对比
-
-
-
-
 
 ### 1、论文1
 
-
-
 ![image-20240707120612759](https://daetz-image.oss-cn-hangzhou.aliyuncs.com/img/202407071206857.png)
-
-
 
 ![image-20240707120737565](https://daetz-image.oss-cn-hangzhou.aliyuncs.com/img/202407071207642.png)
 
@@ -476,10 +444,6 @@ Estimated Total Size (MB): 3.07
 ![image-20240707120151123](https://daetz-image.oss-cn-hangzhou.aliyuncs.com/img/202407071201194.png)
 
 ![image-20240707120316218](https://daetz-image.oss-cn-hangzhou.aliyuncs.com/img/202407071203299.png)
-
-
-
-
 
 ## 五、总结
 
@@ -493,4 +457,4 @@ Estimated Total Size (MB): 3.07
 
 ![image-20240707121959303](https://daetz-image.oss-cn-hangzhou.aliyuncs.com/img/202407071219400.png)
 
-+ 完整的代码和数据集在[GIthub:https://github.com/daetz-coder/RadioML2016.10a_Benchmark](https://github.com/daetz-coder/RadioML2016.10a_Benchmark)，为了方便使用，IQ分量保存在csv中，且仅提供了SNR=6dB的数据，如果需要更多类型的数据，请参考[https://blog.csdn.net/a_student_2020/article/details/139800725](
++ 完整的代码和数据集在[GIthub:https://github.com/daetz-coder/RadioML2016.10a_Benchmark](https://github.com/daetz-coder/RadioML2016.10a_Benchmark)，为了方便使用，IQ分量保存在csv中，且仅提供了SNR=6dB的数据，如果需要更多类型的数据，请参考[https://blog.csdn.net/a_student_2020/article/details/139800725](https://blog.csdn.net/a_student_2020/article/details/139800725?spm=1001.2014.3001.5501)
